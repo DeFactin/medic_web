@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
+import { useNavigate } from 'react-router-dom'
 
 export const useLogin = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const { dispatch } = useAuthContext()
+    const navigate = useNavigate()
 
     const login = async (username, password) => {
         setIsLoading(true)
@@ -19,6 +21,7 @@ export const useLogin = () => {
             const json = await response.json()
 
             if (!response.ok) {
+                console.error('Login error:', json)
                 throw new Error(json.error || 'Something went wrong')
             }
 
@@ -27,8 +30,9 @@ export const useLogin = () => {
 
             // Update the auth context
             dispatch({ type: 'LOGIN', payload: json })
-
+            navigate('/home')
         } catch (err) {
+            console.error('Catch block error:', err)
             setError(err.message)
         } finally {
             setIsLoading(false)
