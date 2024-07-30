@@ -1,11 +1,11 @@
 import '../index.css'
 import { useLogout } from '../hooks/useLogout'
-import { AuthContext } from "../context/AuthContext"
-import { useContext } from "react"
-
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useNavigate } from 'react-router-dom'
 const Navbar = () => {
     const { logout } = useLogout()
-    const { user } = useContext(AuthContext) // Use useContext to get the context values
+    const { user } = useAuthContext()
+    const navigate = useNavigate()
 
     const handleClick = () => {
         if (user?.username) {
@@ -14,6 +14,7 @@ const Navbar = () => {
         } else {
             console.error('No username found for logout');
         }
+        navigate('/')
     }
 
     return (
@@ -22,8 +23,16 @@ const Navbar = () => {
                 <div>
                     <h1>MedicLab</h1>
                 </div>
+                <br></br>
                 <div>
-                    <button onClick={handleClick}>Log out</button>
+                    {user && (
+                        <div>
+                            <h1>Welcome User:</h1>
+                            <h3>{user.username}</h3>
+                            <button onClick={handleClick}>Log out</button>
+                        </div>
+                    )}
+
                 </div>
             </header>
         </div>
