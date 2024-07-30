@@ -1,51 +1,31 @@
-import '../index.css'; // Importing CSS for Home component if needed
+import '../index.css';
 import React, { useState } from 'react';
-const Home = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+import Signup from './Signup';
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log('Username:', username);
-        console.log('Password:', password);
+const Home = () => {
+
+    const [showSignup, setShowSignup] = useState(false); // visibility of popup
+
+    const handleRegisterClick = () => {
+        setShowSignup(true); // Show the signup popup
     };
- 
+
+    const handleCloseSignup = () => {
+        setShowSignup(false); // Hide the signup popup
+    };
+
     return (
         <div className="home-container">
-            <h2>Welcome to MedicLab</h2>
-            <button>Log In</button>
-            <p>Your one-stop solution for medical needs.</p>
-            <p>Explore our services, products, and more!</p>
-
-            <div className="popup-content">
-                <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
+            <button onClick={handleRegisterClick} >Register</button>
+            {showSignup && (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <button className="close-button" onClick={handleCloseSignup}>Close</button>
+                        <Signup />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+                </div>
+            )}
         </div>
-
     );
 }
 
