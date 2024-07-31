@@ -8,6 +8,10 @@ export const userReducer = (state, action) => {
             return {
                 users: action.payload
             }
+        case 'REGISTER':
+            return{
+                users: [action.payload, ...state.users]
+            }
         default:
             return state
     }

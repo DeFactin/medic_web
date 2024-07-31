@@ -2,6 +2,7 @@ import { useState } from "react"
 import '../style/userPopUp.css'
 import { useSignup } from "../hooks/useSignup"
 
+
 const SignupForm = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -10,7 +11,6 @@ const SignupForm = () => {
     const [image, setImage] = useState('')
     const [birthdate, setBirthdate] = useState('')
     const { signup, error, isLoading } = useSignup()
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -73,8 +73,9 @@ const SignupForm = () => {
                         required
                     />
                 </div>
-            </form><div className="buttonWrapper">
-                <button disabled={isLoading}>Sign up</button>
+            </form>
+            <div className="signupWrapper">
+                <button disabled={isLoading} onClick={handleSubmit}>Sign up</button>
                 {error && <div className="error">{error}</div>}
             </div>
         </div>
