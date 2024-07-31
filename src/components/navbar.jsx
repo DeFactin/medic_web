@@ -1,11 +1,25 @@
-import '../index.css'
-import { useLogout } from '../hooks/useLogout'
-import { useAuthContext } from '../hooks/useAuthContext'
-import { useNavigate } from 'react-router-dom'
+import '../style/navbar.css';
+import '../style/userDetails.css'
+import React, { useState } from 'react';
+import { useLogout } from '../hooks/useLogout';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
+import Signup from '../pages/Signup';
+
 const Navbar = () => {
-    const { logout } = useLogout()
-    const { user } = useAuthContext()
-    const navigate = useNavigate()
+    const { logout } = useLogout();
+    const { user } = useAuthContext();
+    const navigate = useNavigate();
+
+    const [showSignup, setShowSignup] = useState(false); // Visibility of popup
+
+    const handleRegisterClick = () => {
+        setShowSignup(true); // Show the signup popup
+    };
+
+    const handleCloseSignup = () => {
+        setShowSignup(false); // Hide the signup popup
+    };
 
     const handleClick = () => {
         if (user?.username) {
@@ -14,29 +28,33 @@ const Navbar = () => {
         } else {
             console.error('No username found for logout');
         }
-        navigate('/')
-    }
+        navigate('/');
+    };
 
     return (
         <div>
             <header>
-                <div>
-                    <h1>MedicLab</h1>
+                <div className="title">
+                    <h2>MedicLab</h2>
                 </div>
-                <br></br>
-                <div>
-                    {user && (
-                        <div>
-                            <h1>Welcome User:</h1>
-                            <h3>{user.username}</h3>
-                            <button onClick={handleClick}>Log out</button>
-                        </div>
-                    )}
-
-                </div>
+                {user && (
+                    <div className="actions">
+                        <h2>{user.username}</h2>
+                        <button className='buttonLog' onClick={handleClick}>Log out</button>
+                        <button className='buttonLog' onClick={handleRegisterClick}>Register</button>
+                    </div>
+                )}
             </header>
+            {showSignup && (
+                <div className="popup-overlay">
+                    <div className="popup-content">
+                        <p className='closeButton' onClick={handleCloseSignup}>X</p>
+                        <Signup />
+                    </div>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default Navbar;

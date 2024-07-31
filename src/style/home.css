@@ -1,0 +1,15 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+}
+  
+.users {
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
+}
+  
