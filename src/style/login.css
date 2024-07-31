@@ -23,12 +23,14 @@
 }
 
 .login-form {
+    position: relative;
     width: 100%;
     max-width: 400px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
 h2 {
@@ -67,12 +69,32 @@ button:disabled {
     background-color: #ccc;
 }
 
-.error {
-    color: red;
-    text-align: center;
-    margin-top: 15px;
-}
-
 h2 {
     color: #5C5C5C;
+}
+
+.spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure the spinner is above the form */
+}
+
+.error-message {
+    position: absolute;
+    bottom: -50px; 
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #d9534f; 
+    background-color: #f8d7da; 
+    border: 1px solid #d9534f; 
+    padding: 10px;
+    border-radius: 4px;
+    visibility: hidden; 
+}
+
+.error-message.show {
+    visibility: visible;
 }
