@@ -46,8 +46,8 @@ const Navbar = () => {
                 )}
             </header>
             {showSignup && (
-                <div className="popup-overlay">
-                    <div className="popup-content">
+                <div className="register-overlay">
+                    <div className="register-content">
                         <p className='closeButton' onClick={handleCloseSignup}>X</p>
                         <Signup />
                     </div>
