@@ -1,5 +1,6 @@
 import { useState } from "react"
 import '../style/userPopUp.css'
+import '../style/home.css'
 import { useSignup } from "../hooks/useSignup"
 
 
@@ -14,11 +15,17 @@ const SignupForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+
         await signup(username, password, name, orders, image, birthdate)
     }
 
     return (
         <div>
+            {isLoading && (
+                <div className="spinner-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <h3>Register a User</h3>
             <form className="grid-form" onSubmit={handleSubmit}>
                 <div className="partEdit">
@@ -50,10 +57,11 @@ const SignupForm = () => {
                     <label>Orders:</label>
                     <input
                         type="number"
-                        min="0"
-                        max="10"
                         onChange={(e) => setOrders(e.target.value)}
                         value={orders}
+                        min="0"
+                        max="10"
+                        step="1"
                         required
                     />
 

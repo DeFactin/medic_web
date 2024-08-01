@@ -15,7 +15,7 @@ const Login = () => {
         setShowError(false);
         setSpinnerVisible(true);
 
-        const delay = 1000; // 1 second delay
+        const delay = 500; // half a second
         const startTime = Date.now();
 
         try {
@@ -40,7 +40,7 @@ const Login = () => {
     useEffect(() => {
         if (!isLoading && error) {
             // Display error message after spinner duration
-            const delay = 1000; // 1 second delay
+            const delay = 500; 
             const timer = setTimeout(() => {
                 setShowError(true);
             }, delay);
