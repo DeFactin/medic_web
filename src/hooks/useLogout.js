@@ -6,6 +6,10 @@ export const useLogout = () => {
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext()
 
+    const localString = localStorage.getItem('user');
+    const tokenData = localString ? JSON.parse(localString) : {};
+    const token = tokenData.token || null;
+
     const logout = async (username) => {
 
         setIsLoading(true)
@@ -13,7 +17,11 @@ export const useLogout = () => {
 
         const response = await fetch('/api/logout/', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+
             body: JSON.stringify({ username })
         })
 

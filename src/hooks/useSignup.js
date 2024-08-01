@@ -8,6 +8,10 @@ export const useSignup = () => {
     const { dispatch } = useUsersContext()
     const navigate = useNavigate()
 
+    const localString = localStorage.getItem('user');
+    const tokenData = localString ? JSON.parse(localString) : {};
+    const token = tokenData.token || null;
+
     const signup = async (username, password, name, orders, image, birthdate) => {
         setIsLoading(true)
         setError(null)
@@ -15,7 +19,10 @@ export const useSignup = () => {
         try {
             const response = await fetch('/api/register/', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
                 body: JSON.stringify({ username, password, name, orders, image, birthdate })
             })
 
