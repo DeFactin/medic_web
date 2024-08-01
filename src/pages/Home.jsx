@@ -106,11 +106,7 @@ const Home = () => {
 
   return (
     <div>
-      {isLoading && (
-        <div className="spinner-overlay">
-          <div className="spinner"></div>
-        </div>
-      )}
+
 
       {showCard && selectedUser && (
         <div className="popup-overlay">
@@ -209,9 +205,14 @@ const Home = () => {
                 </form>
                 <div className="buttonWrapper">
                   <button className="blockButton" onClick={blockUser}>{userData.status === 'active' ? 'Block' : 'Unblock'} the User</button>
-                  <button onClick={handleSave} type="button">Save</button>
+                  <button className='saveButton' onClick={handleSave} type="button">Save</button>
                 </div>
                 {error && <div className="error-save">{error}</div>}
+                {isLoading && (
+                  <div className="spinner-overlay">
+                    <div className="spinner"></div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -220,7 +221,7 @@ const Home = () => {
 
       <div className="home-container">
         <div className="role-admin">
-          <h2>Admins</h2>
+          <h2 className='roles'>ADMINS</h2>
           <div className='users'>
             {users && users.filter(userDetail => userDetail.role === 'Admin').map(userDetail => (
               <div className="card" key={userDetail._id} onClick={() => handleClick(userDetail)}>
@@ -238,7 +239,7 @@ const Home = () => {
         </div>
 
         <div className="role-employee">
-          <h2>Employees</h2>
+          <h2 className='roles'>EMPLOYEES</h2>
           <div className='users'>
             {users && users.filter(userDetail => userDetail.role === 'Employee').map(userDetail => (
               <div className="card" key={userDetail._id} onClick={() => handleClick(userDetail)}>

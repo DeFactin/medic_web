@@ -32,13 +32,15 @@ const Navbar = () => {
     };
 
     return (
-        <div>
+        <div >
             <header>
                 <div className="title">
-                    <h2>MedicLab</h2>
+                    <img className='iconLogo' src='healthfile.png' alt='logo'></img>
+                    <h1>MedicLab</h1>
                 </div>
                 {user && (
                     <div className="actions">
+                        <img alt='user' src='profileicon.png' style={{width:'40px',marginRight:'10px'}}></img>
                         <h2>{user.username}</h2>
                         <button className='buttonLog' onClick={handleClick}>Log out</button>
                         <button className='buttonLog' onClick={handleRegisterClick}>Register</button>

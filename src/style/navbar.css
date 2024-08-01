@@ -9,11 +9,11 @@ header {
     display: flex;
     justify-content: space-between; /* Distribute space between items */
     align-items: center;            /* Center items vertically */
-    background-color: #c5dff8; 
+    background: linear-gradient(90deg, #eef5fd, #c5dff8);
     color: #ffffff;
     padding: 20px 20px;
     position: relative;
-    height: 60px;
+    height: 80px;
 }
 
 header .title, header .actions {
@@ -25,12 +25,13 @@ h2 {
     margin: 0; /* Remove default margin */
     color: #5C5C5C;
     font-size: 20px;
+    color:#63707c;
 }
 
 .buttonLog {
     background-color: white;
     color: #333;
-    border: none;
+    border: 2px solid #63707c;
     padding: 10px 20px;
     margin: 0 5px;
     border-radius: 5px;
@@ -41,7 +42,7 @@ h2 {
 }
 
 .buttonLog:hover {
-    background-color: #a3c8f4;
+    background-color: #9eb2c6;
     color: #000;
 }
 
@@ -69,4 +70,14 @@ h2 {
     overflow: auto;   /* Allow scrolling within the popup content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 50%;
+  }
+
+  .iconLogo {
+    width:80px;
+    margin-right:10px;
+    margin-left:30px;
+  }
+
+  h1{
+    color:#5d84ab;
   }

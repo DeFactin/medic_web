@@ -40,11 +40,11 @@ const Login = () => {
     useEffect(() => {
         if (!isLoading && error) {
             // Display error message after spinner duration
-            const delay = 500; 
+            const delay = 500;
             const timer = setTimeout(() => {
                 setShowError(true);
             }, delay);
-            
+
             return () => clearTimeout(timer);
         }
     }, [isLoading, error]);
@@ -52,16 +52,11 @@ const Login = () => {
     return (
         <div className='container'>
             <div className='left-side'>
-                <img src='healthfiles.png' alt='MedicLab Logo' className='logo' />
+                <img src='healthfile.png' alt='MedicLab Logo' className='logo' />
             </div>
-            {spinnerVisible && (
-                <div className='spinner-container'>
-                    <SPLoader />
-                </div>
-            )}
             <div className='right-side'>
                 <form onSubmit={handleSubmit} className='login-form'>
-                    <h2>Login</h2>
+                    <h2 className='titleMedic'>MedicLab Login</h2>
                     <div className='form-group'>
                         <label htmlFor='username'>Username:</label>
                         <input
@@ -87,6 +82,11 @@ const Login = () => {
                     <div className={`error-message ${showError ? 'show' : ''}`}>
                         {error}
                     </div>
+                    {spinnerVisible && (
+                        <div className='spinner-container'>
+                            <SPLoader />
+                        </div>
+                    )}
                 </form>
             </div>
         </div>

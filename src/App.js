@@ -13,11 +13,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route
             path="/home"
-            element={user ? <Home /> : <Navigate to="/" />}
+            element={user ? <><Navbar /> <Home /> </> : <Navigate to="/" />}
           />
           <Route
             path="/"

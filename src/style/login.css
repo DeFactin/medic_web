@@ -1,17 +1,18 @@
 .container {
     display: flex;
-    height: 80vh;
+    height: 100vh;
 }
 
 .left-side {
-    flex: 1;
+    flex: 1.5;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(90deg, #c5dff8, #eef5fd);
 }
 
 .logo {
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
 }
 
@@ -33,9 +34,12 @@
     box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
-h2 {
+.titleMedic {
     margin-bottom: 0;
     text-align: center;
+    font-size:22px;
+    padding:10px;
+    border-bottom: 2px solid #c5dff8;
 }
 
 .form-group {
@@ -59,10 +63,11 @@ button {
     border-radius: 4px;
     background-color: #c5dff8;
     color: #5C5C5C;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     margin:auto;
-    width:50%;
+    width:100%;
+    font-weight:bold;
 }
 
 button:disabled {
@@ -75,23 +80,25 @@ h2 {
 
 .spinner-container {
     position: absolute;
-    top: 50%;
+    top: 115%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2; /* Ensure the spinner is above the form */
 }
 
 .error-message {
-    position: absolute;
-    bottom: -50px; 
-    left: 0;
-    right: 0;
+    display:block;
+    position:absolute;
+    width:90%;
+    bottom: -45px; 
+    right: 10;
     text-align: center;
     color: #d9534f; 
     background-color: #f8d7da; 
     border: 1px solid #d9534f; 
-    padding: 10px;
     border-radius: 4px;
+    padding-top:10px;
+    padding-bottom:10px;
     visibility: hidden; 
 }
 
