@@ -17,7 +17,7 @@ export const useSignup = () => {
         setError(null)
 
         try {
-            const response = await fetch('/api/register/', {
+            const response = await fetch('https://deploy-mern-medic-api.vercel.app/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

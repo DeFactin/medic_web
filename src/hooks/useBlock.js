@@ -15,7 +15,7 @@ export const useBlock = () => {
     setError(null);
     setSuccess(false);
 
-    const response = await fetch(`/api/users/block/${_id}`, {
+    const response = await fetch(`https://deploy-mern-medic-api.vercel.app/users/block/${_id}`, {
       method: 'PUT', headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,

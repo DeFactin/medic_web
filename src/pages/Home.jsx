@@ -22,7 +22,7 @@ const Home = () => {
     setIsLoading(true);
     const fetchUsers = async () => {
       if (user) {
-        const response = await fetch('/api/users/', {
+        const response = await fetch('https://deploy-mern-medic-api.vercel.app/users/', {
           headers: { 'Authorization': `Bearer ${user.token}` },
         });
         const json = await response.json();
@@ -38,7 +38,7 @@ const Home = () => {
   const fetchUserDetails = async (userId) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/users/details/${userId}`, {
+      const response = await fetch(`https://deploy-mern-medic-api.vercel.app/users/details/${userId}`, {
         headers: { 'Authorization': `Bearer ${user.token}` },
       });
       const json = await response.json();
@@ -83,7 +83,7 @@ const Home = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`/api/users/update/${userData._id}`, {
+      const response = await fetch(`https://deploy-mern-medic-api.vercel.app/users/update/${userData._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

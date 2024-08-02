@@ -15,7 +15,7 @@ export const useLogout = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('/api/logout/', {
+        const response = await fetch('https://deploy-mern-medic-api.vercel.app/logout/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
